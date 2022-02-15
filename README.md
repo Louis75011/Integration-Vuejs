@@ -1,4 +1,8 @@
 # tediber-vuejs
+- J'ai souhaité intégrer le HTML dans le template de Vue.js avec les bonnes pratiques.
+- J'ai ajouté SASS afin d'imbriquer le code.
+- J'ai utilisé le stricte nécessaire en matière de technologies.
+- J'ai récupéré en PNG tous les logos des images avec Photoshop pour une bonne intégration.
 
 # 1 Objectif
 
