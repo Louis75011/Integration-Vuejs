@@ -41,7 +41,7 @@
 <style scoped lang="scss">
   .navbar ul {
     display: flex;
-    margin: 10px;
+    justify-content: center;
 
     h2,
     h3,

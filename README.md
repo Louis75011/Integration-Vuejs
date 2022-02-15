@@ -1,8 +1,10 @@
 # tediber-vuejs
-- J'ai souhaité intégrer le HTML dans le template de Vue.js avec les bonnes pratiques.
-- J'ai ajouté SASS afin d'imbriquer le code.
+- J'ai intégrer le template avec les bonnes pratiques.
+- J'ai utilisé le format JSON pour récupérer ensuite des données dynamiques.
+- J'ai souhaité ajouter SASS afin d'imbriquer le code.
 - J'ai utilisé le stricte nécessaire en matière de technologies.
-- J'ai récupéré en PNG tous les logos des images avec Photoshop pour une bonne intégration.
+- J'ai récupéré en PNG les logos de la documentation avec Photoshop pour une bonne intégration web/infographisme.
+- J'ai profité de la logique des composants pour découper ma page en trois espaces (header, main, footer) et utiliser certains afin de réutiliser (boite, titre).
 
 # 1 Objectif
 

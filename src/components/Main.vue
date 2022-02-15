@@ -1,21 +1,16 @@
 <template>
   <main>
     <!-- Middle of the screen -->
-    <h2>Suivi de commande</h2>
-    <img src="../assets/triangles.png" alt="decoration, yellow">
-
+    <Title>Suivi de commande</Title>
     <section class="delivery-articles">
       <div class="delivery">
         <div class="notation">
-          <p>N° de commande : <strong>405560003</strong></p>
-          <p>Date de commande : <strong>1 mai 2019</strong></p>
-          <p>Date d'expédition : <strong>3 mai 2019</strong></p>
+          <p>N° de commande : <strong>{{data.orderNumber}}</strong></p>
+          <p>Date de commande : <strong>{{renderDate(data.orderDate)}}</strong></p>
+          <p>Date d'expédition : <strong>{{renderDate(data.shippingDate)}}</strong></p>
         </div>
 
-        <div class="menu-top">
-          <p>Suivi de commande</p>
-          <img src="../assets/menu-main.png" alt="button">
-        </div>
+        <ExpandBox title="Suivi commande"></ExpandBox>
 
         <!-- <div class="menu-middle">
           <img src="../assets/blue-arrow.png" alt="button">
@@ -25,61 +20,43 @@
         <svg></svg>
         </div> -->
 
-        <div class="menu-bottom">
-          <p>Informations sur les retours</p>
-          <img src="../assets/menu-footer.png" alt="button">
-        </div>
+        <ExpandBox title="Informations sur les retours">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum maxime fuga ad quibusdam incidunt facere illo
+          quo tempore ratione iure sed dicta reiciendis mollitia temporibus ducimus, ullam aliquam quia atque.
+        </ExpandBox>
       </div>
 
-      <article>
-        <p>ARTICLES (4)</p>
+      <aside>
+        <p>ARTICLES ({{totalArticles}})</p>
 
         <div class="container">
-          <div class="container-article">
-            <img src="../assets/tediber-material-01.jpg" alt="mattress">
-            <h3>L'incroyable matelas Tediber</h3>
-            <p class="bold">750 €</p>
-            <p>TAILLE : 160 x 200 cm</p>
-            <p>QTÉ: 1</p>
-          </div>
-
-          <div class="container-article">
-            <img src="../assets/tediber-material-02.jpg" alt="pillow">
-            <h3>L'incroyable oreiller Tediber</h3>
-            <p class="bold">85 €</p>
-            <p>TAILLE : 60 x 60 cm</p>
-            <p>QTÉ: 2</p>
-          </div>
-
-          <div class="container-article">
-            <img src="../assets/tediber-material-03.jpg" alt="duvet">
-            <h3>L'incroyable couette Tediber</h3>
-            <p class="bold">220 €</p>
-            <p>TAILLE : 240 x 220 cm</p>
-            <p>QTÉ: 1</p>
+          <div class="container-article" v-for="article in data.articles" :key="article.id">
+            <img v-bind:src="article.image" alt="mattress">
+            <h3>{{article.title}}</h3>
+            <p class="bold">{{article.price}} €</p>
+            <p>TAILLE : {{article.size.join(" x ")}} cm</p>
+            <p>QTÉ: {{article.amount}}</p>
           </div>
         </div>
-      </article>
+      </aside>
     </section>
 
     <!-- Other menus -->
-    <h2>Informations sur la livraison</h2>
-    <img src="../assets/triangles.png" alt="decoration, yellow">
-
+    <Title>Informations sur la livraison</Title>
     <div class="container-info">
       <div class="info">
         <h3 class="bold">Adresse de collecte</h3>
-        <p>POINT RELAIS</p>
-        <p>57 rue Jean Piere Timbaud</p>
-        <p>Paris</p>
-        <p>75011</p>
-        <p>France</p>
+        <p>{{data.pickupAddress.name}}</p>
+        <p>{{data.pickupAddress.address}}</p>
+        <p>{{data.pickupAddress.city}}</p>
+        <p>{{data.pickupAddress.zipCode}}</p>
+        <p>{{data.pickupAddress.country}}</p>
       </div>
 
       <div class="info">
         <h3 class="bold">Vos coordonnées</h3>
-        <p>Shannon Honniball</p>
-        <p>0664262272</p>
+        <p>{{data.userContact.name}}</p>
+        <p>{{data.userContact.phone}}</p>
       </div>
 
       <div class="info">
@@ -94,27 +71,85 @@
     </div>
 
     <div class="payment">
-      <h2>Informations de paiement</h2>
-      <img src="../assets/triangles.png" alt="decoration, yellow">
+      <Title>Informations de paiement</Title>
     </div>
 
     <div class="container-pay">
-      <img src="../assets/visa-card.jpg" alt="visa card">
-      <span>VISA</span>
+      <img :src="paymentImages[data.paymentType]" :alt="data.paymentType">
+      <span>{{data.paymentType}}</span>
     </div>
 
-    <h2>Total commande</h2>
-    <img src="../assets/triangles.png" alt="decoration, yellow">
-
-    <p>Sous-totale 1130</p>
-    <p>Livraison GRATUITE</p>
-    <p class="bold">TOTAL : 1130</p>
+    <Title>Total commande</Title>
+    <div class="container-total">
+      <p>Sous-total {{totalPrice}}</p>
+      <p>Livraison {{data.deliveryCharges > 0 ? data.deliveryCharges : "GRATUITE"}}</p>
+      <p class="bold">TOTAL : {{totalPrice + data.deliveryCharges}}</p>
+    </div>
   </main>
 </template>
 
 <script>
+  import data from '../data/db.json'
+  import Title from './Title.vue'
+  import ExpandBox from './ExpandBox.vue';
+
   export default {
-    name: 'Main'
+    name: "Main",
+    data() {
+      return {
+        data,
+        paymentImages: {
+          VISA: "/assets/visa-card.jpg",
+        },
+        // Calcule le nombre total d'éléments
+        totalArticles: data.articles.reduce((total, element) => {
+          return total + element.amount;
+        }, 0),
+        // Calcule le prix total
+        totalPrice: data.articles.reduce((total, element) => {
+          return total + element.amount * element.price;
+        }, 0)
+      };
+    },
+    methods: {
+      // Renvoie la date version française
+      renderDate(dateString, weekday = false) {
+        const d = new Date(dateString);
+        const year = d.getFullYear();
+        const month = [
+          "janvier",
+          "février",
+          "mars",
+          "avril",
+          "mai",
+          "juin",
+          "juillet",
+          "août",
+          "septembre",
+          "octobre",
+          "novembre",
+          "décembre"
+        ][d.getMonth()];
+        const day = d.getDate();
+        let dow = "";
+        if (weekday) {
+          dow = [
+            "dimanche",
+            "lundi",
+            "mardi",
+            "mercredi",
+            "jeudi",
+            "vendredi",
+            "samedi",
+          ][d.getDay()];
+        }
+        return [dow, day, month, year].join(" ").trim();
+      }
+    },
+    components: {
+      Title,
+      ExpandBox
+    }
   }
 </script>
 
@@ -137,11 +172,21 @@
 
     .delivery-articles {
       display: flex;
-      justify-content: center;
+
+      .delivery,
+      aside {
+        flex: 1;
+
+      }
     }
 
     .container-info {
       display: flex;
+    }
+
+    .container-total {
+      flex-direction: column;
+      text-align: center;
     }
   }
 </style>

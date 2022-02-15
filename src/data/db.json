@@ -1,0 +1,48 @@
+{
+    "orderNumber": 405560003,
+    "orderDate": "2019-05-01",
+    "shippingDate": "2019-05-03",
+    "status": 2,
+
+    "articles": [{
+            "title": "L'incroyable matelas Tediber",
+            "price": 750,
+            "size": [160, 200],
+            "amount": 1,
+            "id": 1,
+            "image": "/assets/tediber-material-01.jpg"
+        },
+        {
+            "title": "L'incroyable oreiller Tediber",
+            "price": 85,
+            "size": [60, 60],
+            "amount": 2,
+            "id": 2,
+            "image": "/assets/tediber-material-02.jpg"
+        },
+        {
+            "title": "L'incroyable couette Tediber",
+            "price": 210,
+            "size": [240, 220],
+            "amount": 1,
+            "id": 3,
+            "image": "/assets/tediber-material-03.jpg"
+        }
+    ],
+
+    "pickupAddress": {
+        "name": "POINT RELAIS",
+        "address": "57 rue Jean Piere Timbaud",
+        "city": "PARIS",
+        "zipCode": 75011,
+        "country": "France"
+    },
+    "userContact": {
+        "name": "Shannon Honniball",
+        "phone": "0664262272"
+    },
+    "deliveryDate": "2019-05-09",
+    "deliveryType": "standard",
+    "paymentType": "VISA",
+    "deliveryCharges": 0
+}

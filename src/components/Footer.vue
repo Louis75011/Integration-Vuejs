@@ -1,53 +1,44 @@
 <template>
   <footer>
     <!-- Bottom of the screen -->
-    <h2>Besoin d'aide ?</h2>
-    <img src="../assets/triangles.png" alt="decoration, yellow">
+    <Title>Besoin d'aide ?</Title>
 
-    <ul>
-      <div class="informations">
-        <li>Foire aux questions Tediber</li>
-        <img src="../assets/menu-footer.png" alt="button">
-      </div>
-
-      <div class="informations">
-        <li>La garantie Tediber</li>
-        <img src="../assets/menu-footer.png" alt="button">
-      </div>
-
-      <div class="informations">
-        <li>Reprise de l'ancienne literie</li>
-        <img src="../assets/menu-footer.png" alt="button">
-      </div>
-
-      <div class="informations">
-        <li>Comment faire un retour ?</li>
-        <img src="../assets/menu-footer.png" alt="button">
-      </div>
-    </ul>
+    <ExpandBox title="FOIRE AUX QUESTIONS TEDIBER">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum maxime fuga ad quibusdam incidunt facere illo
+      quo
+      tempore ratione iure sed dicta reiciendis mollitia temporibus ducimus, ullam aliquam quia atque.
+    </ExpandBox>
+    <ExpandBox title="LA GARANTIE TEDIBER">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum maxime fuga ad quibusdam incidunt facere illo
+      quo
+      tempore ratione iure sed dicta reiciendis mollitia temporibus ducimus, ullam aliquam quia atque.
+    </ExpandBox>
+    <ExpandBox title="REPRISE DE L'ANCIENNE LITERIE">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum maxime fuga ad quibusdam incidunt facere illo
+      quo
+      tempore ratione iure sed dicta reiciendis mollitia temporibus ducimus, ullam aliquam quia atque.
+    </ExpandBox>
+    <ExpandBox title="COMMENT FAIRE UN RETOUR ?">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum maxime fuga ad quibusdam incidunt facere illo
+      quo
+      tempore ratione iure sed dicta reiciendis mollitia temporibus ducimus, ullam aliquam quia atque.
+    </ExpandBox>
   </footer>
 </template>
 
 <script>
+  import Title from "./Title.vue";
+  import ExpandBox from "./ExpandBox.vue";
+
   export default {
-    name: 'Footer'
+    name: "Footer",
+    components: {
+      Title,
+      ExpandBox
+    }
   }
 </script>
 
 <style scoped lang="scss">
-  footer {
-    img {
-      height: 20px;
-    }
 
-    .informations {
-      display: flex;
-    }
-
-    h2,
-    h3,
-    li {
-      text-transform: uppercase;
-    }
-  }
 </style>
