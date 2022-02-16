@@ -7,7 +7,7 @@
         <li>Nos produits</li>
         <li>Le concept</li>
         <li>Avis</li>
-        <img src="../assets/teddy-face.png" alt="teddy, logo">
+        <img class="teddy-icon" src="../assets/teddy-face.png" alt="teddy, logo">
         <li>Pub TV</li>
         <li>Mon compte</li>
         <li>Mag</li>
@@ -42,6 +42,18 @@
   .navbar ul {
     display: flex;
     justify-content: center;
+    align-items: center;
+    justify-content: space-around;
+    list-style-type: none;
+    margin: 0 auto;
+
+    li {
+      cursor: pointer;
+    }
+
+    .teddy-icon {
+      margin: 0 2rem;
+    }
 
     h2,
     h3,

@@ -29,13 +29,17 @@
       <aside>
         <p>ARTICLES ({{totalArticles}})</p>
 
-        <div class="container">
+        <div class="container-aside">
           <div class="container-article" v-for="article in data.articles" :key="article.id">
             <img v-bind:src="article.image" alt="mattress">
-            <h3>{{article.title}}</h3>
-            <p class="bold">{{article.price}} €</p>
-            <p>TAILLE : {{article.size.join(" x ")}} cm</p>
-            <p>QTÉ: {{article.amount}}</p>
+            <div class="container-text">
+              <h3>{{article.title}}</h3>
+              <p class="bold">{{article.price}} €</p>
+              <div class="container-size-quantity">
+                <p>TAILLE : {{article.size.join(" x ")}} cm</p>
+                <p>QTÉ: {{article.amount}}</p>
+              </div>
+            </div>
           </div>
         </div>
       </aside>
@@ -43,8 +47,8 @@
 
     <!-- Other menus -->
     <Title>Informations sur la livraison</Title>
-    <div class="container-info">
-      <div class="info">
+    <div class="container-delivery">
+      <div class="container-address">
         <h3 class="bold">Adresse de collecte</h3>
         <p>{{data.pickupAddress.name}}</p>
         <p>{{data.pickupAddress.address}}</p>
@@ -53,18 +57,18 @@
         <p>{{data.pickupAddress.country}}</p>
       </div>
 
-      <div class="info">
+      <div class="container-coordinates">
         <h3 class="bold">Vos coordonnées</h3>
         <p>{{data.userContact.name}}</p>
         <p>{{data.userContact.phone}}</p>
       </div>
 
-      <div class="info">
+      <div class="container-estimated">
         <h3 class="bold">Livraison estimée</h3>
         <p>jeudi 9 mai 2019</p>
       </div>
 
-      <div class="info">
+      <div class="container-method">
         <h3 class="bold">Mode de livraison</h3>
         <p>livraison standard en point relais</p>
       </div>
@@ -76,7 +80,7 @@
 
     <div class="container-pay">
       <img :src="paymentImages[data.paymentType]" :alt="data.paymentType">
-      <span>{{data.paymentType}}</span>
+      <span class="placing">{{data.paymentType}}</span>
     </div>
 
     <Title>Total commande</Title>
@@ -112,35 +116,20 @@
       };
     },
     methods: {
-      // Renvoie la date version française
+      // Renvoie la date en version française
       renderDate(dateString, weekday = false) {
         const d = new Date(dateString);
         const year = d.getFullYear();
         const month = [
-          "janvier",
-          "février",
-          "mars",
-          "avril",
-          "mai",
-          "juin",
-          "juillet",
-          "août",
-          "septembre",
-          "octobre",
-          "novembre",
-          "décembre"
+          "janvier", "février", "mars", "avril", "mai", "juin",
+          "juillet", "août", "septembre", "octobre", "novembre", "décembre"
         ][d.getMonth()];
         const day = d.getDate();
         let dow = "";
         if (weekday) {
           dow = [
-            "dimanche",
-            "lundi",
-            "mardi",
-            "mercredi",
-            "jeudi",
-            "vendredi",
-            "samedi",
+            "dimanche", "lundi", "mardi", "mercredi",
+            "jeudi", "vendredi", "samedi",
           ][d.getDay()];
         }
         return [dow, day, month, year].join(" ").trim();
@@ -155,38 +144,79 @@
 
 <style scoped lang="scss">
   main {
-
-    h2,
-    h3,
-    li {
+    h3 {
       text-transform: uppercase;
     }
 
-    section img {
-      height: 20px;
-    }
-
-    section article img {
-      height: 80px;
-    }
-
+    /* Items for sale */
     .delivery-articles {
-      display: flex;
+      /* width: 80%; */
+      display: flex;    
+      font-size: 13px;
 
       .delivery,
       aside {
         flex: 1;
+      }
 
+      aside .container-aside {
+        display: flex;
+        flex-direction: column;
+
+        .container-article {
+          display: flex;
+          margin: 1rem;
+          padding: 1rem;
+          box-shadow: 2px 2px 2px 2px gray;
+          border-radius: 2px;
+
+          img {
+            height: 200px;
+          }
+
+          .container-text {
+            margin-left: 1rem;
+          }
+        }
       }
     }
 
-    .container-info {
+    /* Delivery informations */
+    .container-delivery {
+      width: 80%;
+      margin: 0 auto;
+      padding: 1rem;
       display: flex;
+      justify-content: space-between;
+      box-shadow: 2px 2px 2px 2px gray;
+
+      .container-coordinates, .container-estimated, .container-method {
+        border-left: 2px solid gray;
+      }
     }
 
+    /* Card payment VISA */
+    .container-pay {
+      width: 80%;
+      margin: 0 auto;
+      padding: 1rem;
+      display: flex;
+      align-items: center;
+      box-shadow: 2px 2px 2px 2px gray;
+
+      .placing {
+        margin-left: 1rem;
+      }
+    }
+
+    /* Price total */
     .container-total {
       flex-direction: column;
       text-align: center;
+      width: 80%;
+      margin: 0 auto;
+      padding: 1rem;
+      box-shadow: 2px 2px 2px 2px gray;
     }
   }
 </style>
