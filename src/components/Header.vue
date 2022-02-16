@@ -1,68 +1,34 @@
 <template>
-  <header>
-    <!-- Top of the screen -->
-    <nav class="navbar">
-      <ul>
-        <img src="../assets/tediber.png" alt="tediber, property sale">
-        <li>Nos produits</li>
-        <li>Le concept</li>
-        <li>Avis</li>
-        <img class="teddy-icon" src="../assets/teddy-face.png" alt="teddy, logo">
-        <li>Pub TV</li>
-        <li>Mon compte</li>
-        <li>Mag</li>
-        <li>Contactez-nous</li>
-        <img src="../assets/teddy-bag.png" alt="teddy, bag">
-      </ul>
-    </nav>
+<header>
+  <nav>
+      <button @click="menuOpen = !menuOpen" id="burger">
+        <img src="/assets/menu-burger.png" alt="menu">
+      </button>
 
-    <!-- <nav class="navbar-mobile">
+      <img src="/assets/tediber.png" alt="tediber, property sale">
       <ul>
-        <li>Nos produits</li>
+        <li>Nos produits<button><img src="/assets/menu-footer.png" alt="arrow" /></button></li>
         <li>Le concept</li>
         <li>Avis</li>
-        <img />
+      </ul>
+      <img class="teddy-icon" src="/assets/teddy-face.png" alt="teddy, logo">
+      <ul>
         <li>Pub TV</li>
         <li>Mon compte</li>
         <li>Mag</li>
         <li>Contactez-nous</li>
-        <img>
       </ul>
-    </nav> -->
+      <img src="/assets/teddy-bag.png" alt="teddy, bag">
+    </nav>
   </header>
 </template>
 
 <script>
-  export default {
+export default {
     name: 'Header'
   }
 </script>
 
-<style scoped lang="scss">
-  .navbar ul {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    justify-content: space-around;
-    list-style-type: none;
-    margin: 0 auto;
+<style>
 
-    li {
-      cursor: pointer;
-    }
-
-    .teddy-icon {
-      margin: 0 2rem;
-    }
-
-    h2,
-    h3,
-    li {
-      text-transform: uppercase;
-    }
-
-    img {
-      height: 50px;
-    }
-  }
 </style>

@@ -40,5 +40,11 @@
 </script>
 
 <style scoped lang="scss">
+  footer {
+    padding: 0 4.5rem 2rem;
 
+    @media (max-width: 640px) {
+      padding: 0 0 2rem;
+    }
+  }
 </style>

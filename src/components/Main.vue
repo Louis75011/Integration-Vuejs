@@ -10,15 +10,9 @@
           <p>Date d'expédition : <strong>{{renderDate(data.shippingDate)}}</strong></p>
         </div>
 
-        <ExpandBox title="Suivi commande"></ExpandBox>
+        <ExpandBox title="Suivi commande">
 
-        <!-- <div class="menu-middle">
-          <img src="../assets/blue-arrow.png" alt="button">
-          <svg></svg>
-        <svg></svg>
-        <svg></svg>
-        <svg></svg>
-        </div> -->
+        </ExpandBox>
 
         <ExpandBox title="Informations sur les retours">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum maxime fuga ad quibusdam incidunt facere illo
@@ -27,17 +21,18 @@
       </div>
 
       <aside>
-        <p>ARTICLES ({{totalArticles}})</p>
-
         <div class="container-aside">
-          <div class="container-article" v-for="article in data.articles" :key="article.id">
-            <img v-bind:src="article.image" alt="mattress">
-            <div class="container-text">
-              <h3>{{article.title}}</h3>
-              <p class="bold">{{article.price}} €</p>
-              <div class="container-size-quantity">
-                <p>TAILLE : {{article.size.join(" x ")}} cm</p>
-                <p>QTÉ: {{article.amount}}</p>
+          <p>ARTICLES ({{totalArticles}})</p>
+          <div class="list-articles">
+            <div class="container-article" v-for="article in data.articles" :key="article.id">
+              <img v-bind:src="article.image" alt="mattress, duvet, pillow">
+              <div class="container-text">
+                <h3>{{article.title}}</h3>
+                <p class="bold">{{article.price}} €</p>
+                <div class="container-size-quantity">
+                  <p>TAILLE : {{article.size.join(" x ")}} cm</p>
+                  <p>QTÉ: {{article.amount}}</p>
+                </div>
               </div>
             </div>
           </div>
@@ -48,7 +43,7 @@
     <!-- Other menus -->
     <Title>Informations sur la livraison</Title>
     <div class="container-delivery">
-      <div class="container-address">
+      <div class="container-section">
         <h3 class="bold">Adresse de collecte</h3>
         <p>{{data.pickupAddress.name}}</p>
         <p>{{data.pickupAddress.address}}</p>
@@ -57,18 +52,18 @@
         <p>{{data.pickupAddress.country}}</p>
       </div>
 
-      <div class="container-coordinates">
+      <div class="container-section">
         <h3 class="bold">Vos coordonnées</h3>
         <p>{{data.userContact.name}}</p>
         <p>{{data.userContact.phone}}</p>
       </div>
 
-      <div class="container-estimated">
+      <div class="container-section">
         <h3 class="bold">Livraison estimée</h3>
         <p>jeudi 9 mai 2019</p>
       </div>
 
-      <div class="container-method">
+      <div class="container-section">
         <h3 class="bold">Mode de livraison</h3>
         <p>livraison standard en point relais</p>
       </div>
@@ -85,9 +80,9 @@
 
     <Title>Total commande</Title>
     <div class="container-total">
-      <p>Sous-total {{totalPrice}}</p>
-      <p>Livraison {{data.deliveryCharges > 0 ? data.deliveryCharges : "GRATUITE"}}</p>
-      <p class="bold">TOTAL : {{totalPrice + data.deliveryCharges}}</p>
+      <p><span>Sous-total</span> <span>{{totalPrice}}</span></p>
+      <p><span>Livraison</span> <span>{{data.deliveryCharges > 0 ? data.deliveryCharges : "GRATUITE"}}</span></p>
+      <p class="bold"><span>TOTAL :</span> <span>{{totalPrice + data.deliveryCharges}}</span></p>
     </div>
   </main>
 </template>
@@ -144,65 +139,134 @@
 
 <style scoped lang="scss">
   main {
+    padding: 0 4.5rem;
+
+    @media (max-width: 640px) {
+      padding: 0;
+    }
+
     h3 {
       text-transform: uppercase;
     }
 
     /* Items for sale */
     .delivery-articles {
-      /* width: 80%; */
-      display: flex;    
+      display: flex;
+      gap: 2.5rem;
       font-size: 13px;
+
+      @media (max-width: 640px) {
+        flex-direction: column;
+        padding: 0 2rem;
+      }
+
+      
 
       .delivery,
       aside {
         flex: 1;
       }
 
-      aside .container-aside {
+      .list-articles {
         display: flex;
         flex-direction: column;
+        gap: 1.5rem;
+      }
 
-        .container-article {
+      .container-article {
+        display: flex;
+
+        padding: 1rem;
+        box-shadow: 2px 2px 10px silver;
+
+        h3 {
+          margin: 0;
+        }
+
+        img {
+          height: 120px;
+        }
+
+        .container-text {
           display: flex;
-          margin: 1rem;
-          padding: 1rem;
-          box-shadow: 2px 2px 2px 2px gray;
-          border-radius: 2px;
+          flex-direction: column;
+          justify-content: space-between;
+          margin-left: 1rem;
+        }
 
-          img {
-            height: 200px;
-          }
-
-          .container-text {
-            margin-left: 1rem;
-          }
+        .container-size-quantity p {
+          margin: 0;
         }
       }
+
     }
 
     /* Delivery informations */
     .container-delivery {
-      width: 80%;
       margin: 0 auto;
       padding: 1rem;
       display: flex;
       justify-content: space-between;
-      box-shadow: 2px 2px 2px 2px gray;
+      box-shadow: 2px 2px 10px silver;
 
-      .container-coordinates, .container-estimated, .container-method {
-        border-left: 2px solid gray;
+      @media (max-width: 768px) {
+        flex-direction: column;
+        margin: 0 2rem;
+      }
+
+      .container-section {
+        flex: 1;
+
+        @media (max-width: 768px) {
+          flex: unset;
+        }
+
+        &:not(:first-child) {
+          padding-left: 1rem;
+          border-left: 2px solid silver;
+
+          @media (max-width: 768px) {
+            padding-left: 0;
+            border-left: none;
+            padding-top: 1rem;
+            border-top: 2px solid silver;
+          }
+        }
+
+        &:not(:last-child) {
+          padding-right: 1rem;
+
+          @media (max-width: 768px) {
+            padding-right: unset;
+            padding-bottom: 1rem;
+          }
+        }
+
+        h3 {
+          margin-top: 0;
+        }
+
+        p {
+          margin: 0;
+        }
       }
     }
 
     /* Card payment VISA */
     .container-pay {
-      width: 80%;
       margin: 0 auto;
       padding: 1rem;
       display: flex;
       align-items: center;
-      box-shadow: 2px 2px 2px 2px gray;
+      box-shadow: 2px 2px 10px silver;
+
+      @media (max-width: 640px) {
+        margin: 0 2rem;
+      }
+
+      img {
+        height: 40px;
+      }
 
       .placing {
         margin-left: 1rem;
@@ -211,12 +275,29 @@
 
     /* Price total */
     .container-total {
+      display: flex;
       flex-direction: column;
-      text-align: center;
-      width: 80%;
-      margin: 0 auto;
+      box-shadow: 2px 2px 10px silver;
       padding: 1rem;
-      box-shadow: 2px 2px 2px 2px gray;
+      gap: 0.75rem;
+
+      @media (max-width: 640px) {
+        margin: 0 2rem;
+      }
+
+      p {
+        /* width: fit-content; */
+        display: flex;
+        justify-content: space-between;
+        flex: 1;
+        width: 220px;
+        margin: 0 auto;
+
+        @media (max-width: 640px) {
+          width: 100%;
+          padding: 0 1rem;
+        }
+      }
     }
   }
 </style>

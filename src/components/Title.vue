@@ -1,7 +1,8 @@
 <template>
     <div>
         <h2>
-            <slot />
+            <span>
+                <slot /></span>
         </h2>
         <img src="/assets/triangles.png" alt="triangles, yellow">
     </div>
@@ -17,22 +18,37 @@
     h2 {
         display: flex;
         align-items: center;
+        text-align: center;
         text-transform: uppercase;
+        font-weight: 500;
+
+        span {
+            display: block;
+            max-width: 60%;
+        }
 
         &:before,
         &:after {
             content: "";
             display: block;
             flex: 1;
-            border-top: 2px solid black;
+            border-top: 1px solid black;
         }
 
         &:before {
             margin-right: 30px;
+
+            @media (max-width: 640px) {
+                margin-right: 15px;
+            }
         }
 
         &:after {
             margin-left: 30px;
+
+            @media (max-width: 640px) {
+                margin-left: 15px;
+            }
         }
     }
 

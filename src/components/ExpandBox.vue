@@ -30,8 +30,8 @@
 
 <style scoped lang="scss">
     .expand-container {
-        border-top: 2px solid black;
-        border-bottom: 2px solid black;
+        border-top: 1px solid black;
+        border-bottom: 1px solid black;
 
         +.expand-container {
             border-top: none;
