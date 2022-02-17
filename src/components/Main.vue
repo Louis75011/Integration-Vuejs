@@ -10,7 +10,7 @@
           <p>Date d'expédition : <strong>{{renderDate(data.shippingDate)}}</strong></p>
         </div>
 
-        <ExpandBox title="Suivi commande">
+        <ExpandBox title="Suivi commande" isOpen=true>
           <div class="order-tracking">
             <div class="step">
               <img src="/assets/Group1.svg" />
@@ -111,6 +111,7 @@
   import data from '../data/db.json';
   import Title from './Title.vue';
   import ExpandBox from './ExpandBox.vue';
+
   export default {
     name: "Main",
     data() {

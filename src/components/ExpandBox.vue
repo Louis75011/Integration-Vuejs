@@ -18,11 +18,15 @@
                 type: String,
                 required: true,
                 default: "",
+
+            },
+            isOpen: {
+                type: Boolean
             },
         },
-        data() {
+        data(props) {
             return {
-                open: false
+                open: props.isOpen,
             }
         }
     }

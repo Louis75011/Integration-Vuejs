@@ -41,7 +41,7 @@
     name: 'Header',
     data() {
       return {
-        menuOpen: true
+        menuOpen: false
       }
     }
   }
