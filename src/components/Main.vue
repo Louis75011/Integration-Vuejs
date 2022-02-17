@@ -108,8 +108,8 @@
 </template>
 
 <script>
-  import data from '../data/db.json'
-  import Title from './Title.vue'
+  import data from '../data/db.json';
+  import Title from './Title.vue';
   import ExpandBox from './ExpandBox.vue';
 
   export default {

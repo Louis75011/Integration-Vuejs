@@ -6,7 +6,7 @@
         <img src="/assets/menu-burger.png" alt="menu">
       </button>
 
-      <img src="/assets/tediber.png" alt="tediber, property sale">
+      <img src="/assets/tediber.png" alt="tediber, property sale" />
       <ul>
         <li>Nos produits<button><img src="/assets/menu-footer.png" alt="arrow" /></button></li>
         <li>Le concept</li>
@@ -53,7 +53,10 @@
     box-shadow: 0 2px 6px 0 #ccc;
     gap: 1rem;
     text-transform: uppercase;
-    cursor: pointer;
+    
+    p, img {
+      cursor: pointer;
+    }
   }
 
   header nav {

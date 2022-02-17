@@ -17,7 +17,7 @@
             title: {
                 type: String,
                 required: true,
-                default: ""
+                default: "",
             },
         },
         data() {
