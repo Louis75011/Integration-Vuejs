@@ -56,7 +56,6 @@
     @media (max-width : 640px) {
         footer .expand-container {
             .header {
-                /* color: green; */
                 padding-left: 2rem;
                 padding-right: 0.75rem;
             }

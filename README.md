@@ -8,6 +8,7 @@
 - J'ai profité de la logique des composants pour découper ma page en trois espaces (header, main, footer) et utilisé certains autres afin de les réutiliser dans mon application (boite, titre).
 - J'ai généralement employé des variables ou des méthodes dans script pour ajouter des directives de clics, de boucles ou de conditions.
 - J'ai fais le responsive mobile et tablette avec les Media queries dans le style.
+- Je n'avais pas de design pour la barre de navigation en mobile, j'ai donc bricolé quelque chose de classique qui rappelle la version bureau/dekstop.
 
 ## Project setup
 

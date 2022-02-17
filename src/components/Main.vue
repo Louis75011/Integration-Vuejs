@@ -11,7 +11,27 @@
         </div>
 
         <ExpandBox title="Suivi commande">
-
+          <div class="order-tracking">
+            <div class="step">
+              <img src="/assets/Group1.svg" />
+              <img class="box" :src="data.status >= 1 ? '/assets/box-checked.png' : '/assets/box.png'" alt="box">
+            </div>
+            <img class="arrow" src="/assets/blue-arrow.png" alt="arrow">
+            <div class="step">
+              <img src="/assets/Group2.svg" />
+              <img class="box" :src="data.status >= 2 ? '/assets/box-checked.png' : '/assets/box.png'" alt="box">
+            </div>
+            <img class="arrow" src="/assets/blue-arrow.png" alt="arrow">
+            <div class="step">
+              <img src="/assets/Group3.svg" />
+              <img class="box" :src="data.status >= 3 ? '/assets/box-checked.png' : '/assets/box.png'" alt="box">
+            </div>
+            <img class="arrow" src="/assets/blue-arrow.png" alt="arrow">
+            <div class="step">
+              <img src="/assets/Group4.svg" />
+              <img class="box" :src="data.status >= 4 ? '/assets/box-checked.png' : '/assets/box.png'" alt="box">
+            </div>
+          </div>
         </ExpandBox>
 
         <ExpandBox title="Informations sur les retours">
@@ -160,7 +180,43 @@
         padding: 0 2rem;
       }
 
-      
+      .order-tracking {
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        flex-wrap: wrap;
+        padding: 1rem 0;
+        gap: 1rem;
+
+        @media (max-width: 768px) {
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .step {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          align-items: center;
+          gap: 2rem;
+          height: 150px;
+        }
+
+        .box {
+          width: 32px;
+        }
+
+        .arrow {
+          display: block;
+          width: 32px;
+          margin-top: 1rem;
+
+          @media (max-width: 768px) {
+            transform: rotate(90deg);
+            margin: 1.5rem 0;
+          }
+        }
+      }
 
       .delivery,
       aside {
@@ -211,7 +267,6 @@
 
       @media (max-width: 768px) {
         flex-direction: column;
-        margin: 0 2rem;
       }
 
       .container-section {
@@ -286,7 +341,6 @@
       }
 
       p {
-        /* width: fit-content; */
         display: flex;
         justify-content: space-between;
         flex: 1;
