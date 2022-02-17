@@ -111,7 +111,6 @@
   import data from '../data/db.json';
   import Title from './Title.vue';
   import ExpandBox from './ExpandBox.vue';
-
   export default {
     name: "Main",
     data() {
@@ -231,7 +230,6 @@
 
       .container-article {
         display: flex;
-
         padding: 1rem;
         box-shadow: 2px 2px 10px silver;
 
@@ -254,7 +252,6 @@
           margin: 0;
         }
       }
-
     }
 
     /* Delivery informations */
