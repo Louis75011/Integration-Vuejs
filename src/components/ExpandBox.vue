@@ -18,7 +18,6 @@
                 type: String,
                 required: true,
                 default: "",
-
             },
             isOpen: {
                 type: Boolean

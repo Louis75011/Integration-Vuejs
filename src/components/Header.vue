@@ -21,19 +21,19 @@
       </ul>
       <img src="/assets/teddy-bag.png" alt="teddy, bag">
     </nav>
-  </header>
 
-  <nav v-if="menuOpen === true" id="burger-nav">
-    <ul>
-      <li>Nos produits</li>
-      <li>Le concept</li>
-      <li>Avis</li>
-      <li>Pub TV</li>
-      <li>Mon compte</li>
-      <li>Mag</li>
-      <li>Contactez-nous</li>
-    </ul>
-  </nav>
+    <nav v-if="menuOpen === true" id="burger-nav">
+      <ul>
+        <li>Nos produits</li>
+        <li>Le concept</li>
+        <li>Avis</li>
+        <li>Pub TV</li>
+        <li>Mon compte</li>
+        <li>Mag</li>
+        <li>Contactez-nous</li>
+      </ul>
+    </nav>
+  </header>
 </template>
 
 <script>
@@ -53,8 +53,9 @@
     box-shadow: 0 2px 6px 0 #ccc;
     gap: 1rem;
     text-transform: uppercase;
-    
-    p, img {
+
+    p,
+    img {
       cursor: pointer;
     }
   }

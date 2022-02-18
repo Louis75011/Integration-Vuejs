@@ -1,8 +1,7 @@
 <template>
     <div>
         <h2>
-            <span>
-                <slot /></span>
+                <slot></slot>
         </h2>
         <img src="/assets/triangles.png" alt="triangles, yellow">
     </div>
@@ -22,7 +21,7 @@
         text-transform: uppercase;
         font-weight: 500;
 
-        span {
+        slot {
             display: block;
             max-width: 60%;
         }
