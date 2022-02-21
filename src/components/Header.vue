@@ -21,6 +21,7 @@
       </ul>
       <img src="/assets/teddy-bag.png" alt="teddy, bag">
     </nav>
+  </header>
 
     <nav v-if="menuOpen === true" id="burger-nav">
       <ul>
@@ -33,7 +34,7 @@
         <li>Contactez-nous</li>
       </ul>
     </nav>
-  </header>
+
 </template>
 
 <script>
